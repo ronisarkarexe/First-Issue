@@ -8,3 +8,9 @@ export interface Repository {
   repoUrl: string;
   techStack: string[];
 }
+
+export interface RepositoryIssue {
+  html_url: string;
+  state: string;
+  title: string;
+}

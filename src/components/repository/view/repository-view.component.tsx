@@ -1,14 +1,39 @@
 /* eslint-disable @next/next/no-img-element */
-import { Repository } from "@/model/repository.model";
-import React from "react";
-import { getRepoName } from "../repository.helper";
+import { Repository, RepositoryIssue } from "@/model/repository.model";
+import React, { useEffect, useState } from "react";
+import {
+  getLastCommitDate,
+  getRepoIssues,
+  getRepoName,
+} from "../repository.helper";
 import Link from "next/link";
+import { formatDistanceToNow } from "date-fns";
 
 const RepositoryViewComponent = (props: { item: Repository }) => {
+  const [lastCommitDate, setLastCommitDate] = useState<string>("");
+  const [repoIssues, setRepoIssues] = useState<RepositoryIssue[]>([]);
+
+  useEffect(() => {
+    const fetchRepoDetails = async () => {
+      const commit = await getLastCommitDate(props.item.repoUrl);
+      const issues = await getRepoIssues(
+        "https://github.com/OpenLake/Leaderboard-Pro"
+      );
+      setRepoIssues(issues);
+      setLastCommitDate(formatRelativeTime(commit));
+    };
+    fetchRepoDetails();
+  }, [props.item.repoUrl]);
+
+  const formatRelativeTime = (timestamp: string): string => {
+    const date = new Date(timestamp);
+    return formatDistanceToNow(date, { addSuffix: true });
+  };
+
   return (
     <div className="border border-gray-400 p-3 rounded-md">
       <div className="flex justify-start gap-10">
-        <h1 className="text-start text-xl">
+        <h1 className="text-start text-1xl">
           <Link href={props.item.repoUrl} target="_b">
             {getRepoName(props.item.repoUrl)}
           </Link>
@@ -38,6 +63,11 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
               props.item.repoUrl
             )}?style=flat-square&labelColor=343b41`}
           />
+        </div>
+        <div>
+          <h1 className="text-end text-base text-gray-500 ml-12">
+            last activity: {lastCommitDate}
+          </h1>
         </div>
       </div>
       <div>
