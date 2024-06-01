@@ -36,8 +36,16 @@ export const getRepoIssues = async (repoUrl: string) => {
         html_url: issue.html_url,
         title: issue.title,
         state: issue.state,
+        comments: issue.comments,
+        assignee: issue.assignee
+          ? {
+              avatar_url: issue.assignee.avatar_url,
+            }
+          : null,
+        labels: issue.labels.map((label: any) => ({
+          name: label.name,
+        })),
       }));
-
     return issues;
   } catch (error) {
     console.error(error);

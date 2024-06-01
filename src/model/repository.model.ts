@@ -9,8 +9,17 @@ export interface Repository {
   techStack: string[];
 }
 
+export interface LabelName {
+  name: string;
+}
+
 export interface RepositoryIssue {
   html_url: string;
   state: string;
   title: string;
+  comments: number;
+  assignee: {
+    avatar_url: string;
+  };
+  labels: LabelName[];
 }

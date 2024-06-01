@@ -10,6 +10,8 @@ import {
 } from "../repository.helper";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
+import Image from "next/image";
+import comment from "../../../assert/icon/comment-regular.svg";
 
 const RepositoryViewComponent = (props: { item: Repository }) => {
   const [issueListShow, setIssueListShow] = useState(false);
@@ -109,13 +111,60 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
           {repoIssues.length ? (
             repoIssues.map((issue, index) => (
               <div
-                className="flex my-1 text-gray-500 text-sm hover:text-blue-500"
+                className="flex align-center justify-between my-1 gap-6"
                 key={index}
               >
-                <span>#{getIssueNumber(issue.html_url)}</span>
-                <Link href={issue.html_url} target="_b">
-                  <h1 className="ml-2">{issue.title}</h1>
-                </Link>
+                <div className="flex gap-3">
+                  <div className="flex text-gray-500 text-sm hover:text-blue-500">
+                    <span>#{getIssueNumber(issue.html_url)}</span>
+                    <Link href={issue.html_url} target="_b">
+                      <h1 className="ml-2">{issue.title}</h1>
+                    </Link>
+                  </div>
+                  <div>
+                    {issue.labels.length ? (
+                      issue.labels.map((label, index) => (
+                        <span
+                          key={index}
+                          className="ml-1 text-sm text-green-500 border border-blue-500 px-1 py-0 rounded-lg"
+                        >
+                          {label.name}
+                        </span>
+                      ))
+                    ) : (
+                      <div></div>
+                    )}
+                    <span></span>
+                  </div>
+                  <div>
+                    {issue?.assignee?.avatar_url ? (
+                      <Image
+                        width={24}
+                        height={24}
+                        className="rounded-full"
+                        src={issue.assignee.avatar_url}
+                        alt="assigned"
+                      />
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
+                </div>
+                <div>
+                  <div className="flex items-center">
+                    <span className="text-gray-500 text-right">
+                      {issue.comments}
+                    </span>
+                    <span className="text-gray-500 ml-1">
+                      <Image
+                        width={14}
+                        height={14}
+                        src={comment}
+                        alt="assigned"
+                      />
+                    </span>
+                  </div>
+                </div>
               </div>
             ))
           ) : (

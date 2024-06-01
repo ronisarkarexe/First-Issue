@@ -20,7 +20,7 @@ const HeaderComponent = () => {
         scrolled ? "bg-slate-900 shadow-md" : "bg-slate-900"
       }`}
     >
-      <h1 className="text-3xl text-center my-4 text-blue-500">First Issue</h1>
+      <h1 className="text-3xl text-center my-4 text-blue-500">👨‍💻 First Issue 🎉</h1>
     </div>
   );
 };
