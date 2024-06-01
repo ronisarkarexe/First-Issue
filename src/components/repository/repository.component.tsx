@@ -11,8 +11,8 @@ const RepositoryComponent = () => {
         <div>
           <p className="text-sm text-gray-500 text-pretty indent-8 text-justify">
             First Issue is a platform dedicated to curating beginner-friendly
-            issues from open-source projects. Whether you're a developer looking
-            to make your contribution to open source or an experienced
+            issues from open-source projects. Whether you are a developer
+            looking to make your contribution to open source or an experienced
             programmer seeking new projects to collaborate on, First Issue makes
             it easier to find tasks that match your skill level and interests.
           </p>
