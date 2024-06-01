@@ -2,6 +2,7 @@
 import { Repository } from "@/model/repository.model";
 import React, { useEffect, useState } from "react";
 import RepositoryViewComponent from "./view/repository-view.component";
+import { getLastCommitDate } from "./repository.helper";
 
 const RepositoryListComponent = () => {
   const [repositories, setRepositories] = useState<Repository[]>([]);
@@ -11,7 +12,18 @@ const RepositoryListComponent = () => {
         "https://first-issue-server.vercel.app/api/v1/repository"
       );
       const result = await res.json();
-      setRepositories(result.data);
+      const repositoriesWithDates = await Promise.all(
+        result.data.map(async (repo: Repository) => {
+          const lastCommitDate = new Date(
+            await getLastCommitDate(repo.repoUrl)
+          );
+          return { ...repo, lastCommitDate };
+        })
+      );
+      const sortedRepositories = repositoriesWithDates.sort(
+        (a, b) => b.lastCommitDate.getTime() - a.lastCommitDate.getTime()
+      );
+      setRepositories(sortedRepositories);
     };
     repositoryData();
   }, []);
