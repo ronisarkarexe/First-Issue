@@ -111,11 +111,11 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
           {repoIssues.length ? (
             repoIssues.map((issue, index) => (
               <div
-                className="flex align-center justify-between my-1 gap-6"
+                className="flex flex-wrap align-center justify-between my-1 gap-0 md:gap-0 lg-gap-6 xl-gap-6"
                 key={index}
               >
-                <div className="flex gap-3">
-                  <div className="flex text-gray-500 text-sm hover:text-blue-500">
+                <div className="flex flex-wrap gap-3">
+                  <div className="flex  text-gray-500 text-sm hover:text-blue-500">
                     <span>#{getIssueNumber(issue.html_url)}</span>
                     <Link href={issue.html_url} target="_b">
                       <h1 className="ml-2">{issue.title}</h1>
