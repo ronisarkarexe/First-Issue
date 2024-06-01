@@ -2,23 +2,24 @@
 import { Repository, RepositoryIssue } from "@/model/repository.model";
 import React, { useEffect, useState } from "react";
 import {
+  getIssueNumber,
   getLastCommitDate,
   getRepoIssues,
   getRepoName,
+  truncateDescription,
 } from "../repository.helper";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
 
 const RepositoryViewComponent = (props: { item: Repository }) => {
+  const [issueListShow, setIssueListShow] = useState(false);
   const [lastCommitDate, setLastCommitDate] = useState<string>("");
   const [repoIssues, setRepoIssues] = useState<RepositoryIssue[]>([]);
 
   useEffect(() => {
     const fetchRepoDetails = async () => {
       const commit = await getLastCommitDate(props.item.repoUrl);
-      const issues = await getRepoIssues(
-        "https://github.com/OpenLake/Leaderboard-Pro"
-      );
+      const issues = await getRepoIssues(props.item.repoUrl);
       setRepoIssues(issues);
       setLastCommitDate(formatRelativeTime(commit));
     };
@@ -31,10 +32,15 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
   };
 
   return (
-    <div className="border border-gray-400 p-3 rounded-md">
+    <div
+      className={`${
+        issueListShow ? "border border-blue-400" : "border border-gray-400"
+      } p-3 rounded-md cursor-pointer`}
+      onClick={() => setIssueListShow(!issueListShow)}
+    >
       <div className="flex justify-start gap-10">
-        <h1 className="text-start text-1xl">
-          <Link href={props.item.repoUrl} target="_b">
+        <h1 className="text-start text-sm">
+          <Link href={props.item.liveUrl} target="_b">
             {getRepoName(props.item.repoUrl)}
           </Link>
         </h1>
@@ -65,17 +71,19 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
           />
         </div>
         <div>
-          <h1 className="text-end text-base text-gray-500 ml-12">
+          <span className="text-end text-base text-gray-500 ml-12">
             last activity: {lastCommitDate}
-          </h1>
+          </span>
         </div>
       </div>
-      <div>
-        <span>{props.item.description}</span>
+      <div className="my-2">
+        <span className="text-sm text-gray-400">
+          {truncateDescription(props.item.description, 24)}
+        </span>
       </div>
       <div className="flex text-base my-1">
-        Lang:{" "}
-        <div className="flex ml-2">
+        <span className="text-sm text-gray-400">Lang:</span>
+        <div className="flex gap-1 flex-wrap">
           {props.item.techStack.map((item, index) => (
             <h1
               key={index}
@@ -86,6 +94,28 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
           ))}
         </div>
       </div>
+
+      {issueListShow && (
+        <div className="mt-3">
+          <hr className="border-gray-700 mb-2" />
+          {repoIssues.length ? (
+            repoIssues.map((issue, index) => (
+              <div className="flex my-1 text-gray-500 text-sm" key={index}>
+                <Link href={issue.html_url} target="_b">
+                  <span>#{getIssueNumber(issue.html_url)}</span>
+                </Link>
+                <h1 className="ml-2">{issue.title}</h1>
+              </div>
+            ))
+          ) : (
+            <div>
+              <span className="text-gray-500 text-base">
+                Issue list not available!
+              </span>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };

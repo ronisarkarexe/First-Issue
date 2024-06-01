@@ -44,3 +44,18 @@ export const getRepoIssues = async (repoUrl: string) => {
     return null;
   }
 };
+
+export const getIssueNumber = (issueUrl: string) => {
+  return issueUrl.split("/").pop();
+};
+
+export const truncateDescription = (
+  description: string,
+  wordLimit: number
+): string => {
+  const words = description.trim().split(/\s+/);
+  if (words.length <= wordLimit) {
+    return description;
+  }
+  return words.slice(0, wordLimit).join(" ") + "...";
+};

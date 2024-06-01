@@ -20,12 +20,12 @@ const RepositoryListComponent = () => {
     <div>
       {repositories.length ? (
         repositories.map((item) => (
-          <div key={item.id}>
+          <div key={item.id} className="mb-2">
             <RepositoryViewComponent item={item} />
           </div>
         ))
       ) : (
-        <div>No Repository List avaliable</div>
+        <div>No Repository List available</div>
       )}
     </div>
   );
