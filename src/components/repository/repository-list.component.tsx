@@ -3,6 +3,7 @@ import { Repository } from "@/model/repository.model";
 import React, { useEffect, useState } from "react";
 import RepositoryViewComponent from "./view/repository-view.component";
 import { getLastCommitDate } from "./repository.helper";
+import LoadingPage from "@/app/loading";
 
 const RepositoryListComponent = () => {
   const [repositories, setRepositories] = useState<Repository[]>([]);
@@ -30,6 +31,10 @@ const RepositoryListComponent = () => {
     };
     repositoryData();
   }, []);
+
+  if (repositories.length === 0) {
+    return <LoadingPage />;
+  }
 
   return (
     <div>

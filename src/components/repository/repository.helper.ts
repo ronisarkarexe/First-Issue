@@ -40,7 +40,6 @@ export const getRepoIssues = async (repoUrl: string, token: string) => {
       }
     );
     const data = await response.json();
-    console.log("response data", data);
     const issues = data
       .filter((issue: any) => issue.state === "open")
       .map((issue: any) => ({

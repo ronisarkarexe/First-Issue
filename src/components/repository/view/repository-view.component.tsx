@@ -50,7 +50,7 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
       <div className="flex flex-col sm:flex-row md:flex-col lg:flex-col xl:flex-row justify-start gap-1 sm:gap-8 md:gap-1 lg:gap-1 xl:gap-8">
         <h1 className="text-start text-sm">
           <Link href={props.item.liveUrl} target="_b">
-            {truncateTitle(getRepoName(props.item.repoUrl) as string, 13)}
+            {truncateTitle(props.item.title, 20)}
           </Link>
         </h1>
         <div className="flex sm:gap-2 gap-2">
@@ -89,7 +89,7 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
               issueListShow ? "text-blue-500 " : "text-gray-500 "
             } ml-0 sm:ml-12 md:ml-0 lg:ml-0 xl:ml-12`}
           >
-            last activity: {lastCommitDate}
+            last act: {lastCommitDate}
           </span>
         </div>
       </div>
