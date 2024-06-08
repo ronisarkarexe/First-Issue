@@ -7,6 +7,7 @@ import {
   getRepoIssues,
   getRepoName,
   truncateDescription,
+  truncateTitle,
 } from "../repository.helper";
 import Link from "next/link";
 import { formatDistanceToNow } from "date-fns";
@@ -20,8 +21,14 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
 
   useEffect(() => {
     const fetchRepoDetails = async () => {
-      const commit = await getLastCommitDate(props.item.repoUrl);
-      const issues = await getRepoIssues(props.item.repoUrl);
+      const commit = await getLastCommitDate(
+        props.item.repoUrl,
+        process.env.NEXT_PUBLIC_GET_AC_TOKEN as string
+      );
+      const issues = await getRepoIssues(
+        props.item.repoUrl,
+        process.env.NEXT_PUBLIC_GET_AC_TOKEN as string
+      );
       setRepoIssues(issues);
       setLastCommitDate(formatRelativeTime(commit));
     };
@@ -40,10 +47,10 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
       } p-3 rounded-md cursor-pointer`}
       onClick={() => setIssueListShow(!issueListShow)}
     >
-      <div className="flex flex-col sm:flex-row md:flex-col lg:flex-col xl:flex-row justify-start gap-1 sm:gap-10 md:gap-1 lg:gap-1 xl:gap-10">
+      <div className="flex flex-col sm:flex-row md:flex-col lg:flex-col xl:flex-row justify-start gap-1 sm:gap-8 md:gap-1 lg:gap-1 xl:gap-8">
         <h1 className="text-start text-sm">
           <Link href={props.item.liveUrl} target="_b">
-            {getRepoName(props.item.repoUrl)}
+            {truncateTitle(getRepoName(props.item.repoUrl) as string, 13)}
           </Link>
         </h1>
         <div className="flex sm:gap-2 gap-2">
@@ -97,7 +104,9 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
           {props.item.techStack.map((item, index) => (
             <h1
               key={index}
-              className="text-base border border-gray-400 px-2 py-0 rounded-md mx-1 text-gray-500"
+              className={`text-base border border-gray-400 px-2 py-0 rounded-md mx-1 ${
+                issueListShow ? "text-blue-500" : "text-gray-500"
+              }`}
             >
               {item.toLocaleLowerCase()}
             </h1>
@@ -108,7 +117,7 @@ const RepositoryViewComponent = (props: { item: Repository }) => {
       {issueListShow && (
         <div className="mt-3">
           <hr className="border-gray-700 mb-2" />
-          {repoIssues.length ? (
+          {repoIssues?.length ? (
             repoIssues.map((issue, index) => (
               <div
                 className="flex flex-wrap align-center justify-between my-1 gap-0 md:gap-0 lg-gap-6 xl-gap-6"

@@ -6,10 +6,15 @@ export const getRepoName = (url: string) => {
   }
 };
 
-export const getLastCommitDate = async (repoUrl: string) => {
+export const getLastCommitDate = async (repoUrl: string, token: string) => {
   const repoName = getRepoLastCommit(repoUrl);
   const response = await fetch(
-    `https://api.github.com/repos/${repoName}/commits`
+    `https://api.github.com/repos/${repoName}/commits`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
   const data = await response.json();
   if (data && data.length > 0) {
@@ -23,13 +28,19 @@ const getRepoLastCommit = (url: string) => {
   return `${parts[parts.length - 2]}/${parts[parts.length - 1]}`;
 };
 
-export const getRepoIssues = async (repoUrl: string) => {
+export const getRepoIssues = async (repoUrl: string, token: string) => {
   try {
     const repoName = getRepoName(repoUrl);
     const response = await fetch(
-      `https://api.github.com/repos/${repoName}/issues`
+      `https://api.github.com/repos/${repoName}/issues`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
     const data = await response.json();
+    console.log("response data", data);
     const issues = data
       .filter((issue: any) => issue.state === "open")
       .map((issue: any) => ({
@@ -66,4 +77,14 @@ export const truncateDescription = (
     return description;
   }
   return words.slice(0, wordLimit).join(" ") + "...";
+};
+
+export const truncateTitle = (
+  inputStr: string,
+  maxLength: number = 20
+): string => {
+  if (inputStr.length > maxLength) {
+    return inputStr.substring(0, maxLength) + "...";
+  }
+  return inputStr;
 };

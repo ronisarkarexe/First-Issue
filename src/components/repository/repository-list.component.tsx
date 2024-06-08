@@ -15,7 +15,10 @@ const RepositoryListComponent = () => {
       const repositoriesWithDates = await Promise.all(
         result.data.map(async (repo: Repository) => {
           const lastCommitDate = new Date(
-            await getLastCommitDate(repo.repoUrl)
+            await getLastCommitDate(
+              repo.repoUrl,
+              process.env.NEXT_PUBLIC_GET_AC_TOKEN as string
+            )
           );
           return { ...repo, lastCommitDate };
         })
