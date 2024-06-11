@@ -9,8 +9,8 @@ jobs:
       issues: write
       pull-requests: write
     steps:
-    - uses: actions/first-interaction@v1
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-message: "Hi there! Thanks for opening this issue. We appreciate your contribution to this open-source project. We aim to respond or assign your issue as soon as possible. In the meantime you can star the repo and read the [contributing.md](https://github.com/ronisarkarexe/First-Issue/blob/main/CONTRIBUTING.md)"
-        pr-message: "Welcome to Our repository.🎊 Thank you so much for taking the time to point this out."
+      - uses: actions/first-interaction@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-message: "Congratulations, @${{ github.actor }}! 🎉 Thank you for creating your issue for First-Issue. Your contribution is greatly appreciated and we look forward to working with you to resolve the issue. Keep up the great work! Should you have any queries or require guidance, do not hesitate to ask."
+          pr-message: "Great job, @${{ github.actor }}! 🎉 Thank you for submitting your pull request for First-Issue. Our dedicated team will review it diligently.Your contribution is valuable and we appreciate your efforts to improve our project."
