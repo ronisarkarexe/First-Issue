@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Paws",
+    "description": "Paws, is driven by a deep concern for animal welfare. Witnessing the challenges faced by animals worldwide, we were inspired to create a platform that enables users to report injured animals and connect them with the necessary assistance. It is a fast web-app that allows compassionate people to report stray injured animals to nearby NGOs and Animal Hospitals.",
+    "liveUrl": "https://pawss.vercel.app/",
+    "repoUrl": "https://github.com/Innovateninjas/Paws-frontend",
+    "techStack": ["ReactJS", "Javascript", "Firebase", "TailwindCSS"]
+  }
+]

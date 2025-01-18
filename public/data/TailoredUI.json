@@ -1,0 +1,9 @@
+[
+  {
+    "title": "TailoredUI",
+    "description": "TailoredUI is a powerful tool for real-time customization of UI components, seamlessly integrated with Tailwind CSS. Effortlessly personalize and preview changes, harnessing Tailwind's flexible styling. Explore a rich library of pre-built components, ensure responsive design, and export perfected code for easy integration.",
+    "liveUrl": "https://dev-tailoredui.netlify.app/",
+    "repoUrl": "https://github.com/TailoredUI/TailoredUI",
+    "techStack": ["ReactJS", "Tailwind", "Typescript"]
+  }
+]
