@@ -1,46 +1,40 @@
 "use client";
-import { Repository } from "@/model/repository.model";
 import React, { useEffect, useState } from "react";
+import { Repository } from "@/model/repository.model";
 import RepositoryViewComponent from "./view/repository-view.component";
-import { getLastCommitDate } from "./repository.helper";
 import LoadingPage from "@/app/loading";
+import { fetchUserData } from "@/utils/fetchAllUserData";
 
-const RepositoryListComponent = () => {
+const RepositoryListComponent = ({ selectedUser }: { selectedUser: string }) => {
   const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     const repositoryData = async () => {
-      const res = await fetch(
-        "https://first-issue-server.vercel.app/api/v1/repository"
-      );
-      const result = await res.json();
-      const repositoriesWithDates = await Promise.all(
-        result.data.map(async (repo: Repository) => {
-          const lastCommitDate = new Date(
-            await getLastCommitDate(
-              repo.repoUrl,
-              process.env.NEXT_PUBLIC_GET_AC_TOKEN as string
-            )
-          );
-          return { ...repo, lastCommitDate };
-        })
-      );
-      const sortedRepositories = repositoriesWithDates.sort(
-        (a, b) => b.lastCommitDate.getTime() - a.lastCommitDate.getTime()
-      );
-      setRepositories(sortedRepositories);
+      setLoading(true);
+      try {
+        const result = await fetchUserData(selectedUser);
+        if (result.length > 0) {
+          setRepositories(result);
+        }
+      } catch (error) {
+        console.error("Failed to fetch repositories:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     repositoryData();
-  }, []);
+  }, [selectedUser]);
 
-  if (repositories.length === 0) {
+  if (loading) {
     return <LoadingPage />;
   }
 
   return (
     <div>
       {repositories.length ? (
-        repositories.map((item) => (
-          <div key={item.id} className="mb-2">
+        repositories.map((item, index) => (
+          <div key={index} className="mb-2">
             <RepositoryViewComponent item={item} />
           </div>
         ))

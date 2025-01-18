@@ -1,0 +1,10 @@
+[
+    {
+      "title": "First Issue",
+      "description": "First-Issue is an open-source platform designed specifically for beginners looking to contribute to open-source projects.",
+      "liveUrl": "https://firstissuedev.vercel.app",
+      "repoUrl": "https://github.com/ronisarkarexe/First-Issue",
+      "techStack": ["React", "Node.js"]
+    }
+  ]
+  

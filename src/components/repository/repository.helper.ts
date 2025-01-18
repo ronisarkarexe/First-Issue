@@ -87,3 +87,14 @@ export const truncateTitle = (
   }
   return inputStr;
 };
+
+export const getGitHubUserAvatar = async (
+  username: string
+): Promise<string> => {
+  const response = await fetch(`https://api.github.com/users/${username}`);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch data for GitHub user ${username}`);
+  }
+  const data = await response.json();
+  return data.avatar_url as string;
+};

@@ -1,0 +1,17 @@
+[
+  {
+    "title": "PickPalette",
+    "description": "Discover endless color possibilities with PickPalette – effortlessly generate palettes from images, explore diverse schemes, and soon, manage them on a dynamic dashboard. Elevate your design process with our upcoming AI suggestions and visualization tools. New updates - Personalised Dashboard,Live preview based on color algorithms",
+    "liveUrl": "https://www.producthunt.com/products/pickpalette",
+    "repoUrl": "https://github.com/ArnabChatterjee20k/PickPalette-PaletteFromImage",
+    "techStack": [
+      "REACT",
+      "SUPABASE",
+      "PINECONE",
+      "DENO",
+      "PLAYWRIGHT",
+      "MONGODB",
+      "EXPRESS"
+    ]
+  }
+]

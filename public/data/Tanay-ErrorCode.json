@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Lupo Skill",
+    "description": "Lupo Skill stands out as an innovative skill-sharing web application crafted with ReactJS and TypeScript. It offers users a straightforward way to create and participate in knowledge-sharing events. Whether you're leading a workshop, exploring a new skill, or aiming to connect with industry experts, Lupo Skill provides a smooth platform for collaborative learning and networking. Featuring intuitive event creation tools, personalized user profiles, and a lively community vibe, Lupo Skill empowers individuals to share their expertise and delve into meaningful learning journeys.",
+    "liveUrl": "https://lupo-skill.web.app/",
+    "repoUrl": "https://github.com/Tanay-ErrorCode/lupo-skill",
+    "techStack": ["REACT", "FIREBASE", "TYPESCRIPT"]
+  }
+]

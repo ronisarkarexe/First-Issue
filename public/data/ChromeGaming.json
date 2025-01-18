@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Spaceship Escort",
+    "description": "Spaceship Escort is a game where players protect spacecraft from threats in space. Players control escort ships, defend against attacks, and complete missions involving navigation, combat, and strategic decisions.",
+    "liveUrl": "https://chromegaming.github.io/Spaceship-escort/",
+    "repoUrl": "https://github.com/ChromeGaming/Spaceship-escort",
+    "techStack": ["Css", "html", "jquery", "bootstrap", "javascript"]
+  }
+]

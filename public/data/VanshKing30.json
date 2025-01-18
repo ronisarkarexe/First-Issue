@@ -1,0 +1,9 @@
+[
+  {
+    "title": "Foodies Web",
+    "description": "Foodies, your go-to college dining companion! Designed for seamless campus culinary experiences, Foodies simplifies menu exploration and nutritional insights. Access daily canteen menus, make informed dietary choices with Spoonacular integration, and empower canteen efficiency. Our platform prioritizes user security and simplicity, ensuring effortless student sign-ups and hassle-free canteen management. Stay up-to-date with our Health News section, delivering valuable insights for healthier eating habits. Embrace convenience and culinary enlightenment with Foodies!",
+    "liveUrl": "https://foodies-web-app.vercel.app/",
+    "repoUrl": "https://github.com/VanshKing30/FoodiesWeb",
+    "techStack": ["ReactJS", "Javascript", "NodeJS", "MongoDb", "Express"]
+  }
+]
