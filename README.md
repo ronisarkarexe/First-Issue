@@ -148,7 +148,7 @@ By following these steps, you have successfully installed Node.js and npm on you
        "title": "Project Name",
        "description": "Project Description",
        "liveUrl": "Project live URL",
-       "repoUrl": "https://github.com/<github-username>",
+       "repoUrl": "https://github.com/<github-username>/<project-username>",
        "techStack": ["React", "Node.js"]
      }
    ]
