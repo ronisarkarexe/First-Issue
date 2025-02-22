@@ -1,0 +1,110 @@
+[
+  {
+    "code": 100,
+    "color": "green",
+    "status": "Continue",
+    "message": "1xx (Informational)"
+  },
+  {
+    "code": 101,
+    "color": "green",
+    "status": "Switching Protocols",
+    "message": "1xx (Informational)"
+  },
+  {
+    "code": 200,
+    "color": "green",
+    "status": "OK",
+    "message": "2xx (Success)"
+  },
+  {
+    "code": 201,
+    "color": "green",
+    "status": "Created",
+    "message": "2xx (Success)"
+  },
+  {
+    "code": 202,
+    "color": "green",
+    "status": "Accepted",
+    "message": "2xx (Success)"
+  },
+  {
+    "code": 204,
+    "color": "green",
+    "status": "No Content",
+    "message": "2xx (Success)"
+  },
+  {
+    "code": 300,
+    "color": "green",
+    "status": "Multiple Choices",
+    "message": "3xx (Redirection)"
+  },
+  {
+    "code": 301,
+    "color": "green",
+    "status": "Moved Permanently",
+    "message": "3xx (Redirection)"
+  },
+  {
+    "code": 302,
+    "color": "green",
+    "status": "Found",
+    "message": "3xx (Redirection)"
+  },
+  {
+    "code": 304,
+    "color": "green",
+    "status": "Not Modified",
+    "message": "3xx (Redirection)"
+  },
+  {
+    "code": 400,
+    "color": "green",
+    "status": "Bad Request",
+    "message": "4xx (Client Error)"
+  },
+  {
+    "code": 401,
+    "color": "green",
+    "status": "Unauthorized",
+    "message": "4xx (Client Error)"
+  },
+  {
+    "code": 403,
+    "color": "green",
+    "status": "Forbidden",
+    "message": "4xx (Client Error)"
+  },
+  {
+    "code": 404,
+    "color": "green",
+    "status": "Not Found",
+    "message": "4xx (Client Error)"
+  },
+  {
+    "code": 500,
+    "color": "green",
+    "status": "Internal Server Error",
+    "message": "5xx (Server Error)"
+  },
+  {
+    "code": 501,
+    "color": "green",
+    "status": "Not Implemented",
+    "message": "5xx (Server Error)"
+  },
+  {
+    "code": 502,
+    "color": "green",
+    "status": "Bad Gateway",
+    "message": "5xx (Server Error)"
+  },
+  {
+    "code": 503,
+    "color": "green",
+    "status": "Service Unavailable",
+    "message": "5xx (Server Error)"
+  }
+]
