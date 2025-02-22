@@ -4,9 +4,12 @@ import Image from "next/image";
 import contributors from "../../contributors.json";
 import { getGitHubUserAvatar } from "./repository.helper";
 import RepositoryListComponent from "./repository-list.component";
+import Link from "next/link";
+import NavBar from "../nav_bar";
 
 const RepoListViewComponent = () => {
-  const [selectedUser, setSelectedUser] = useState<string>("ronisarkarexe.json");
+  const [selectedUser, setSelectedUser] =
+    useState<string>("ronisarkarexe.json");
   const [avatarUrl, setAvatarUrl] = useState<{ name: string; url: string }[]>(
     []
   );
@@ -27,6 +30,11 @@ const RepoListViewComponent = () => {
 
   return (
     <div>
+      <Link href="/">
+        <div className="mb-4">
+          <NavBar />
+        </div>
+      </Link>
       <div className="relative h-[70px] mb-5 overflow-visible">
         {avatarUrl.map((user, index) => (
           <div

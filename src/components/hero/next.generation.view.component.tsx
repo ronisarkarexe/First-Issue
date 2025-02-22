@@ -13,7 +13,7 @@ const NextGenerationViewComponent = () => {
         W
       </span>
       <span className="text-gray-400 text-sm ml-2">
-        Next-Generation of AI Open Source
+        Next-Generation of Open Source
       </span>
     </div>
   );

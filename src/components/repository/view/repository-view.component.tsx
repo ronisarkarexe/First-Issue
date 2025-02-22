@@ -15,7 +15,7 @@ import Image from "next/image";
 import comment from "../../../assert/icon/comment-regular.svg";
 
 const RepositoryViewComponent = (props: { item: Repository }) => {
-  const [issueListShow, setIssueListShow] = useState(false);
+  const [issueListShow, setIssueListShow] = useState(true);
   const [lastCommitDate, setLastCommitDate] = useState<string>("");
   const [repoIssues, setRepoIssues] = useState<RepositoryIssue[]>([]);
 

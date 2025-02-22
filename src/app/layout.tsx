@@ -36,6 +36,10 @@ export default function RootLayout({
           gtag('js', new Date());
           gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID}');`}
         </Script>
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          rel="stylesheet"
+        ></link>
       </head>
       <body className={inter.className}>{children}</body>
     </html>
