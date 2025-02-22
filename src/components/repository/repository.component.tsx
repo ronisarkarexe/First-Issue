@@ -5,6 +5,7 @@ import HeroComponent from "../hero/hero.component";
 import { getOpenSourceSuggestions } from "@/prompt/prompt";
 import IssueListComponent from "../issues/issue_list.component";
 import { Issue } from "@/model/issue.model";
+import Footer from "../footer";
 
 interface IRepositoryComponentProps {
   generateText: string;
@@ -53,6 +54,7 @@ const RepositoryComponent: React.FC<IRepositoryComponentProps> = ({
           display: none;
         }
       `}</style>
+      <Footer />
     </div>
   );
 };
