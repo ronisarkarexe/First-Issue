@@ -4,6 +4,13 @@
     "description": "First-Issue is an open-source platform designed specifically for beginners looking to contribute to open-source projects.",
     "liveUrl": "https://firstissuedev.vercel.app",
     "repoUrl": "https://github.com/ronisarkarexe/First-Issue",
-    "techStack": ["React", "Node.js"]
+    "techStack": ["Next.JS", "Typescript", "Tailwind CSS", "CSS"]
+  },
+  {
+    "title": "Story Spark AI",
+    "description": "Story-Spark-AI is an open-source platform designed for creative minds to generate and share multiple story variations from a single prompt.",
+    "liveUrl": "https://storysparkai.vercel.app",
+    "repoUrl": "https://github.com/ronisarkarexe/story-spark-ai",
+    "techStack": ["React.JS", "Typescript", "Tailwind CSS", "CSS", "Framer Motion", "ChartJS", "Socket.IO", "Redux", "JWT"]
   }
 ]
